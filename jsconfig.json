@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "jsx": "react",
         "baseUrl": "./",
         "paths": {
             "components/*": ["src/components/*"],
+            "common/*": ["src/common/*"],
             "assets/*": ["src/assets/*"],
+            "network/*": ["src/network/*"],
+            "views/*": ["src/views/*"],
             "@/*": ["src/*"]
         }
     },
