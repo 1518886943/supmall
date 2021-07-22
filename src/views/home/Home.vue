@@ -1,16 +1,123 @@
 <template>
-  <div>
-    <nav-bar></nav-bar>
+  <div id="home">
+    <nav-bar class="hove-nav"><div slot="center">购物街</div></nav-bar>
+    <home-swiper :banners="banners"></home-swiper>
+    <recommend-view :recommends="recommends"></recommend-view>
+    <feature-view></feature-view>
+    <tab-control
+      class="tbl-control"
+      :titles="['流行', '新款', '精选']"
+    ></tab-control>
+    <ul>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+      <li>123123123</li>
+    </ul>
   </div>
 </template>
 <script>
+import HomeSwiper from "./childComps/HomeSwiper.vue";
+import RecommendView from "./childComps/RecommendView.vue";
+import FeatureView from "./childComps/FeatureView.vue";
+
 import NavBar from "components/common/navbar/NavBar";
+import TabControl from "components/content/tabControl/TabControl.vue";
+
+import { getHomeMultidata } from "network/home";
 export default {
   name: "Home",
+  data() {
+    return {
+      banners: [],
+      recommends: [],
+    };
+  },
   components: {
     NavBar,
+    HomeSwiper,
+    RecommendView,
+    FeatureView,
+    TabControl,
+  },
+  created() {
+    //函数函数一旦执行完毕 会被内存回收释放 局部变量
+    //函数调用->压入函数栈（保存函数调用过程中产生的所有变量）
+    //函数调用结束 -> 弹出函数变量（释放函数中所有变量）
+    getHomeMultidata().then((res) => {
+      this.banners = res.data.banner.list;
+      this.recommends = res.data.recommend.list;
+    });
   },
 };
 </script>
 <style>
+#home {
+  padding-top: 44px;
+  overflow: auto;
+}
+.hove-nav {
+  background-color: var(--color-tint);
+  color: white;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+}
+.tbl-control {
+  position: static;
+  top: 44px;
+}
 </style>
