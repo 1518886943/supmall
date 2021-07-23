@@ -8,7 +8,7 @@ export default {
   name: "Slide"
 };
 </script>
-<style>
+<style scoped>
 .slide {
   width: 100%;
   flex-shrink: 0;

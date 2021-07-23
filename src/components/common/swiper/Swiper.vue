@@ -142,9 +142,6 @@ export default {
       // 1.获取要操作的元素
       let swiperEl = document.querySelector(".swiper");
       let slidesEls = swiperEl.getElementsByClassName("slide");
-
-      console.log(slidesEls);
-      console.log(slidesEls.length);
       // 2.保存个数
       this.slideCount = slidesEls.length;
 
@@ -155,7 +152,6 @@ export default {
         swiperEl.insertBefore(cloneLast, slidesEls[0]);
         swiperEl.appendChild(cloneFirst);
         this.totalWidth = swiperEl.offsetWidth;
-        console.log(swiperEl.style);
         this.swiperStyle = swiperEl.style;
       }
 
@@ -230,7 +226,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 #hy-swiper {
   overflow: hidden;
   position: relative;
